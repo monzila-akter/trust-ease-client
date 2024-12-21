@@ -1,12 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
-import "./footer.css";
 
 const Footer = () => {
   return (
-    <footer className="bg-teal-700 p-6">
-      <div className="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+    <footer className="bg-teal-700 px-5 md:px-8 py-12">
+      <div className="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
         
         {/* Website Logo/Name and Description */}
         <div className="text-white">
@@ -21,8 +20,8 @@ const Footer = () => {
         </div>
         
         {/* Useful Links */}
-        <div>
-          <h3 className="text-lg font-semibold text-white mb-3">Useful Links</h3>
+        <div className='ml-0 md:ml-[50px] lg:ml-[165px]'>
+          <h3 className="text-lg font-semibold text-amber-400 mb-4">Useful Links</h3>
           <ul className="space-y-2">
             <li>
               <Link to="/" className="text-white hover:text-amber-400">Home</Link>
@@ -41,26 +40,48 @@ const Footer = () => {
         
         {/* Social Links and Copyright */}
         <div className="text-center md:text-right">
-          <h3 className="text-lg font-semibold text-white mb-3">Follow Us</h3>
+          <h3 className="text-lg font-semibold text-amber-400 mb-4">Follow Us</h3>
           <div className="flex justify-center md:justify-end space-x-4 mb-4">
-            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-amber-400 text-xl">
+            <a
+              href="https://www.facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white hover:text-amber-400 text-xl"
+            >
               <FaFacebook />
             </a>
-            <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-amber-400 text-xl">
+            <a
+              href="https://www.twitter.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white hover:text-amber-400 text-xl"
+            >
               <FaTwitter />
             </a>
-            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-amber-400 text-xl">
+            <a
+              href="https://www.instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white hover:text-amber-400 text-xl"
+            >
               <FaInstagram />
             </a>
-            <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-amber-400 text-xl">
+            <a
+              href="https://www.linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white hover:text-amber-400 text-xl"
+            >
               <FaLinkedin />
             </a>
           </div>
-          <p className="text-sm text-white">
+        </div>
+      </div>
+      <div className='border-b-2 w-11/12 mx-auto mt-16 border-gray-400 mb-5'></div>
+      <div className='text-center'>
+      <p className="text-sm text-white">
             &copy; {new Date().getFullYear()} TrustEase. All Rights Reserved.
           </p>
-          <p className="text-sm text-white mt-2">Designed with ❤️ by TrustEase Team.</p>
-        </div>
       </div>
     </footer>
   );

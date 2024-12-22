@@ -55,8 +55,8 @@ const Register = () => {
 
   return (
     <div className='px-5 flex justify-center items-center'>
-      <div className="w-full max-w-sm md:max-w-lg mx-auto mt-14 p-6 bg-white shadow-lg rounded-lg border-2">
-        <h2 className="text-3xl font-bold text-center text-red-500 mb-6">Please Register Now!</h2>
+      <div className="w-full max-w-sm md:max-w-lg mx-auto mt-14 p-6 bg-teal-50 shadow-lg rounded-lg border-2 mb-14">
+        <h2 className="text-3xl font-bold text-center text-teal-700 mb-6">Please Register Now!</h2>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           
@@ -137,20 +137,20 @@ const Register = () => {
           {/* Register Button */}
           <button
             type="submit"
-            className="w-full py-3 bg-gray-700 text-xl font-semibold rounded-md text-white mt-4"
+            className="w-full py-3 bg-teal-700 text-xl font-semibold rounded-md text-amber-400 hover:bg-teal-900 mt-4"
           >
             Register
           </button>
 
           <p className='font-medium text-gray-500'>
-            Already have an account? Please <Link to="/login" className='text-lg text-red-500'>Login</Link>
+            Already have an account? Please <Link to="/login" className='text-lg text-teal-800'>Login</Link>
           </p>
         </form>
         <div className="divider py-4">OR</div>
         <button
           onClick={handleGoogleLogin}
           type="submit"
-          className="w-full btn  bg-transparent text-xl font-semibold rounded-md text-blue-600  border-2 border-blue-600"
+          className="w-full btn  bg-transparent text-xl font-semibold rounded-md text-teal-700  border-2 border-teal-700"
         >
           <FaGoogle />
           Google

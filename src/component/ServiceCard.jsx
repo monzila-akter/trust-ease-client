@@ -22,6 +22,9 @@ const ServiceCard = ({ service }) => {
         <p className="text-sm text-gray-600 my-2 flex-1">
           {description.slice(0, 80)}...
         </p>
+        <p className="text-sm text-gray-500 mb-2">
+          <strong>Category:</strong> {category}
+        </p>
         <p className="text-lg font-medium text-teal-700 mb-4">
           <strong>Price:</strong> ${price}
         </p>

@@ -3,6 +3,7 @@ import axios from "axios";
 
 import { AuthContext } from "../provider/AuthProvider";
 import toast from "react-hot-toast";
+import Swal from "sweetalert2";
 
 
 const AddServicePage = () => {
@@ -29,7 +30,13 @@ const AddServicePage = () => {
       .post("http://localhost:5000/services", formData) // Adjust to your backend endpoint
       .then((response) => {
         if (response.status === 201) {
-          toast.success("Service added successfully!");
+            Swal.fire({
+                position: "top-center",
+                icon: "success",
+                title: "Service Added Successfully",
+                showConfirmButton: false,
+                timer: 1500
+              });
           setFormData({
             serviceImage: "",
             serviceTitle: "",

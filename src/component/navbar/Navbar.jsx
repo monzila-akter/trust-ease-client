@@ -30,6 +30,10 @@ const Navbar = () => {
           {
             user && <NavLink to="/myReviews" className="text-white hover:text-amber-400">My Reviews</NavLink>
           }
+           {
+            user && <NavLink to="/myServices" className="text-white hover:text-amber-400">My Services</NavLink>
+          }
+          
 
         </div>
 
@@ -92,6 +96,9 @@ const Navbar = () => {
           }
           {
             user && <NavLink to="/myReviews" className="text-white hover:text-amber-400">My Reviews</NavLink>
+          }
+          {
+            user && <NavLink to="/myServices" className="text-white hover:text-amber-400">My Services</NavLink>
           }
           
           {user ? (

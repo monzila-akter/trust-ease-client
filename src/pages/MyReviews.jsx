@@ -3,6 +3,8 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import Rating from "react-rating";
 import { AuthContext } from "../provider/AuthProvider";
+import { FaPenToSquare } from "react-icons/fa6";
+import { FaTrashAlt } from "react-icons/fa";
 
 const MyReviews = () => {
     const { user } = useContext(AuthContext);
@@ -86,8 +88,8 @@ const MyReviews = () => {
     }
 
     return (
-        <div className="w-11/12 mx-auto mt-6">
-            <h2 className="text-2xl text-teal-700 font-bold mb-4">My Reviews</h2>
+        <div className="w-11/12 mx-auto px-5 md:px-10 lg:px-14 my-16">
+            <h2 className="text-4xl text-center text-teal-700 font-bold mb-8">My Reviews</h2>
 
             {reviews.length > 0 ? (
                 <div className="grid gap-6">
@@ -99,20 +101,20 @@ const MyReviews = () => {
                             <h3 className="text-xl text-teal-700 font-bold">
                                 {review.serviceTitle}
                             </h3>
-                            <p className="text-gray-600">{review.text}</p>
-                            <p className="text-sm text-gray-500">Rating: {review.rating}/5</p>
-                            <div className="flex gap-2">
+                            <p className="text-gray-600"><strong>Feedback:</strong> {review.text}</p>
+                            <p className="text-base font-medium text-gray-500 mb-2"><strong>Rating:</strong> {review.rating}/5</p>
+                            <div className="flex gap-4">
                                 <button
-                                    className="btn btn-warning btn-sm"
+                                    className="btn btn-warning text-xl"
                                     onClick={() => setSelectedReview(review)}
                                 >
-                                    Update
+                                    <FaPenToSquare></FaPenToSquare>
                                 </button>
                                 <button
-                                    className="btn btn-error btn-sm"
+                                    className="btn btn-error text-xl text-white"
                                     onClick={() => handleDelete(review._id)}
                                 >
-                                    Delete
+                                   <FaTrashAlt></FaTrashAlt>
                                 </button>
                             </div>
                         </div>
@@ -126,7 +128,7 @@ const MyReviews = () => {
             {selectedReview && (
                 <div className="modal modal-open">
                     <div className="modal-box">
-                        <h3 className="font-bold text-lg">Update Review</h3>
+                        <h3 className="font-bold text-lg mb-3 text-teal-700">Update Review</h3>
                         <form
                             onSubmit={(e) => {
                                 e.preventDefault();
@@ -188,11 +190,11 @@ const MyReviews = () => {
                                 />
                             </div>
                             <div className="modal-action">
-                                <button type="submit" className="btn btn-success">
+                                <button type="submit" className="btn btn-success text-lg">
                                     Save
                                 </button>
                                 <button
-                                    className="btn btn-error"
+                                    className="btn btn-error text-lg"
                                     onClick={() => setSelectedReview(null)}
                                 >
                                     Cancel

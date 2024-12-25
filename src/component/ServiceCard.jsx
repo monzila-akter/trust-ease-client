@@ -19,7 +19,7 @@ const ServiceCard = ({ service }) => {
       {/* Content Section */}
       <div className="p-5 flex flex-col flex-1">
         <h2 className="text-xl text-teal-700 font-bold">{serviceTitle}</h2>
-        <p className="text-sm text-gray-600 my-2 flex-1">
+        <p title={description} className="text-sm text-gray-600 my-2 flex-1">
           {description.slice(0, 80)}...
         </p>
         <p className="text-sm text-gray-500 mb-2">
@@ -32,7 +32,7 @@ const ServiceCard = ({ service }) => {
           <strong>Price:</strong> ${price}
         </p>
         <Link to={`/services/${_id}`}>
-          <button className="w-full mt-auto bg-teal-700 text-lg font-semibold text-white py-2 rounded hover:bg-teal-800">
+          <button className="btn bg-teal-700 text-lg font-semibold text-white py-2 rounded hover:bg-teal-800">
             See Details
           </button>
         </Link>

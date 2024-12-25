@@ -49,7 +49,7 @@ const Reviews = ({ reviews = [], setReviews, serviceId, serviceTitle }) => {
     };
 
     return (
-        <div className="bg-white shadow-md rounded-lg p-6">
+        <div className="bg-white border-2 shadow-md rounded-lg p-6">
             <h2 className="text-2xl text-teal-700 font-bold mb-4">Reviews</h2>
             {loading ? (
                 <p>Loading...</p>
@@ -62,12 +62,12 @@ const Reviews = ({ reviews = [], setReviews, serviceId, serviceTitle }) => {
                                 <img
                                     src={review.userPhoto}
                                     alt={`${review.userName}'s avatar`}
-                                    className="w-10 h-10 rounded-full"
+                                    className="w-10 h-10 object-cover border-2 border-teal-700 rounded-full"
                                 />
                                 <div>
-                                    <p className="text-gray-800">{review.text}</p>
-                                    <div className="flex items-center justify-between mt-2">
-                                        <p className="text-sm text-gray-500">By: {review.userName}</p>
+                                    <p className="text-gray-800"><strong className="text-gray-500">Feedback:</strong> {review.text}</p>
+                                    <div className="flex items-center justify-between space-x-4 mt-2">
+                                        <p className="text-base font-medium text-gray-500">By: {review.userName}</p>
                                         <p className="text-teal-700 font-semibold">
                                             Rating: {review.rating}/5
                                         </p>

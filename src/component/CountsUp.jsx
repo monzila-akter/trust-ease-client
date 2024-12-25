@@ -42,7 +42,7 @@ const CountsUp = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
       {/* Services Count */}
-      <div className="bg-teal-50 border-2 shadow-lg rounded-lg p-6 flex flex-col items-center">
+      <div className="bg-teal-50 border-2 shadow-lg rounded-lg p-6 flex flex-col items-center transition hover:scale-105">
         <FaServicestack className="text-5xl text-teal-700 mb-4" />
         <h2 className="text-2xl text-teal-700 font-semibold mb-2">Services</h2>
         <p className="text-4xl font-bold text-gray-800">
@@ -51,7 +51,7 @@ const CountsUp = () => {
       </div>
 
       {/* Reviews Count */}
-      <div className="bg-teal-50 border-2 shadow-lg rounded-lg p-6 flex flex-col items-center">
+      <div className="bg-teal-50 border-2 shadow-lg rounded-lg p-6 flex flex-col items-center transition hover:scale-105">
         <MdRateReview className="text-5xl text-teal-700 mb-4" />
         <h2 className="text-2xl text-teal-700 font-semibold mb-2">Reviews</h2>
         <p className="text-4xl font-bold text-gray-800">
@@ -60,7 +60,7 @@ const CountsUp = () => {
       </div>
 
       {/* Users Count */}
-      <div className="bg-teal-50 border-2 shadow-lg rounded-lg p-6 flex flex-col items-center">
+      <div className="bg-teal-50 border-2 shadow-lg rounded-lg p-6 flex flex-col items-center transition hover:scale-105">
         <AiOutlineUser className="text-5xl text-teal-700 mb-4" />
         <h2 className="text-2xl text-teal-700 font-semibold mb-2">Users</h2>
         <p className="text-4xl font-bold text-gray-800">

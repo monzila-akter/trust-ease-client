@@ -27,7 +27,7 @@ const AddServicePage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:5000/services", formData) // Adjust to your backend endpoint
+      .post("http://localhost:5000/services", formData, {withCredentials: true}) // Adjust to your backend endpoint
       .then((response) => {
         if (response.status === 201) {
             Swal.fire({

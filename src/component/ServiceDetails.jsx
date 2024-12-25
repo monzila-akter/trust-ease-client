@@ -48,6 +48,7 @@ const ServiceDetails = () => {
                 reviews={reviews}
                 setReviews={setReviews}
                 serviceId={id}
+                serviceTitle={service.serviceTitle}
             />
         </div>
     );

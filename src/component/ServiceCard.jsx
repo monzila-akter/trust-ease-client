@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 const ServiceCard = ({ service }) => {
-  const { _id, serviceImage, serviceTitle, description, category, price } = service;
+  const { _id, serviceImage, serviceTitle, description, category, companyName, price } = service;
 
   return (
     <motion.div
@@ -21,6 +21,9 @@ const ServiceCard = ({ service }) => {
         <h2 className="text-xl text-teal-700 font-bold">{serviceTitle}</h2>
         <p className="text-sm text-gray-600 my-2 flex-1">
           {description.slice(0, 80)}...
+        </p>
+        <p className="text-sm text-gray-500 mb-2">
+          <strong>Company Name:</strong> {companyName}
         </p>
         <p className="text-sm text-gray-500 mb-2">
           <strong>Category:</strong> {category}

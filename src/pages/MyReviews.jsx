@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
+import Rating from "react-rating";
 import { AuthContext } from "../provider/AuthProvider";
 
 const MyReviews = () => {
@@ -17,7 +18,7 @@ const MyReviews = () => {
                     params: { userEmail: user.email },
                 })
                 .then((res) => {
-                    console.log(res.data)
+                    console.log(res.data);
                     setReviews(res.data);
                     setLoading(false);
                 })
@@ -31,7 +32,9 @@ const MyReviews = () => {
     // Update a review
     const handleUpdateSubmit = (updatedReview) => {
         axios
-            .patch(`http://localhost:5000/reviews/${updatedReview._id}`, updatedReview)
+            .patch(`http://localhost:5000/reviews/${updatedReview._id}`, updatedReview, {
+                withCredentials: true,
+            })
             .then(() => {
                 setReviews((prev) =>
                     prev.map((review) =>
@@ -146,19 +149,44 @@ const MyReviews = () => {
                                     })
                                 }
                             />
-                            <input
-                                type="number"
-                                value={selectedReview.rating}
-                                min="1"
-                                max="5"
-                                className="input input-bordered w-full mb-4"
-                                onChange={(e) =>
-                                    setSelectedReview({
-                                        ...selectedReview,
-                                        rating: parseFloat(e.target.value),
-                                    })
-                                }
-                            />
+                            <div className="mb-4">
+                                <p className="text-sm text-gray-500 mb-2">Rate this service:</p>
+                                <Rating
+                                    initialRating={selectedReview.rating}
+                                    onChange={(value) =>
+                                        setSelectedReview({
+                                            ...selectedReview,
+                                            rating: value,
+                                        })
+                                    }
+                                    emptySymbol={
+                                        <svg
+                                            className="w-6 h-6 text-gray-300"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                            <path
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                strokeWidth="2"
+                                                d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                                            ></path>
+                                        </svg>
+                                    }
+                                    fullSymbol={
+                                        <svg
+                                            className="w-6 h-6 text-teal-700"
+                                            fill="currentColor"
+                                            viewBox="0 0 24 24"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                                        </svg>
+                                    }
+                                />
+                            </div>
                             <div className="modal-action">
                                 <button type="submit" className="btn btn-success">
                                     Save

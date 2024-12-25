@@ -43,8 +43,12 @@ const MyServices = () => {
         }
 
         axios
-            .patch(`http://localhost:5000/services/${updatedService._id}`, updatedService)
-            .then(() => {
+            .patch(`http://localhost:5000/services/${updatedService._id}`, updatedService, {
+                withCredentials: true, // Ensure cookies are included
+            })
+            .then((res) => {
+                console.log('res.data', res);
+                
                 setServices((prev) =>
                     prev.map((service) =>
                         service._id === updatedService._id ? updatedService : service
@@ -54,6 +58,8 @@ const MyServices = () => {
                 Swal.fire("Success", "Service updated successfully!", "success");
             })
             .catch((err) => {
+                console.log('err', err);
+                
                 console.error("Error updating service:", err.response?.data || err.message);
                 Swal.fire("Error", err.response?.data?.message || "Failed to update service.", "error");
             });
@@ -71,7 +77,9 @@ const MyServices = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 axios
-                    .delete(`http://localhost:5000/services/${id}`)
+                    .delete(`http://localhost:5000/services/${id}`, {
+                        withCredentials: true, // Ensure cookies are included
+                    })
                     .then(() => {
                         setServices((prev) => prev.filter((service) => service._id !== id));
                         Swal.fire("Deleted!", "Your service has been deleted.", "success");

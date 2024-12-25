@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../provider/AuthProvider";
 
 
-const Reviews = ({ reviews = [], setReviews, serviceId }) => {
+const Reviews = ({ reviews = [], setReviews, serviceId, serviceTitle }) => {
     const { user, loading } = useContext(AuthContext); // Access user from AuthContext
     const [newReview, setNewReview] = useState("");
     const [rating, setRating] = useState(0);
@@ -25,13 +25,15 @@ const Reviews = ({ reviews = [], setReviews, serviceId }) => {
             text: newReview,
             rating,
             serviceId,
+            serviceTitle,
             userName: user.displayName || "Anonymous", // Use user's display name
-            userPhoto: user.photoURL || "https://via.placeholder.com/150", // Use user's photo
+            userEmail: user.email || "Anonymous", 
+            userPhoto: user.photoURL || "https://via.placeholder.com/150",
             postedDate: new Date(),
         };
 
         // POST the new review to the server
-        axios.post("http://localhost:5000/reviews", review).then(() => {
+        axios.post("http://localhost:5000/reviews", review, {withCredentials: true}).then(() => {
             setReviews([...reviews, review]); // Update the reviews state
             setNewReview(""); // Clear the text area
             setRating(0); // Reset the rating input

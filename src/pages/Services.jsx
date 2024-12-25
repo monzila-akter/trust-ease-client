@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import ServiceCard from "../component/ServiceCard";
 import debounce from "lodash.debounce"; // Install with `npm install lodash.debounce`
+import { useSearchParams } from "react-router-dom";
 
 const Services = () => {
   const [services, setServices] = useState([]);
@@ -9,9 +10,10 @@ const Services = () => {
   const [search, setSearch] = useState(""); // Search term
   const [category, setCategory] = useState(""); // Selected category
   const [categories, setCategories] = useState([]); // List of categories
+  const [searchParams, setSearchParams] = useSearchParams();
 
   // Debounced function to fetch services based on search and filter criteria
-  const fetchServices = debounce((query, selectedCategory) => {
+  const fetchServices = (query, selectedCategory) => {
     setLoading(true);
     axios
       .get("http://localhost:5000/services", {
@@ -19,18 +21,21 @@ const Services = () => {
       })
       .then((response) => {
         setServices(response.data);
-        setLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching services:", error);
+      }).finally(() => {
         setLoading(false);
       });
-  }, 500); // Debounce by 500ms
+  }; 
 
-  // Fetch services whenever search or category changes
-  useEffect(() => {
-    fetchServices(search, category);
-  }, [search, category]);
+  // Debounced version of fetch function
+  const debouncedFetchData = useCallback(
+    debounce((query, selectedCategory) => {
+      fetchServices(query, selectedCategory);
+    }, 500), // Debounce delay
+    []
+  );
 
   // Fetch unique categories for the dropdown
   useEffect(() => {
@@ -47,7 +52,20 @@ const Services = () => {
     };
 
     fetchCategories();
+    if (!searchParams.get("search") && !searchParams.get('category')) {
+        fetchServices();
+    }
   }, []);
+
+  useEffect(() => {
+    const initialQuery = searchParams.get("search") || "";
+    const initialCategory = searchParams.get('category') || "";
+    setSearch(initialQuery);
+    setCategory(initialCategory);
+    if (initialQuery || initialCategory) {
+      debouncedFetchData(initialQuery, initialCategory);
+    }
+  }, [searchParams]);
 
   if (loading) {
     return (
@@ -68,13 +86,23 @@ const Services = () => {
           placeholder="Search services..."
           className="input input-bordered w-full max-w-xs"
           value={search}
-          onChange={(e) => setSearch(e.target.value)} // Dynamically update search term
+          onChange={(e) => {
+            const value = e.target.value;
+            setSearch(value);
+            setSearchParams({search: value, category: category});
+            debouncedFetchData(value, category);
+          }} // Dynamically update search term
         />
 
         <select
           className="select select-bordered max-w-xs"
           value={category}
-          onChange={(e) => setCategory(e.target.value)} // Update selected category
+          onChange={(e) => {
+            const value = e.target.value;
+            setCategory(value);
+            setSearchParams({search: search, category: value});
+            debouncedFetchData(search, value);
+          }} // Update selected category
         >
           <option value="">All Categories</option>
           {categories.map((cat) => (

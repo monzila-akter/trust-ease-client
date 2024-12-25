@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../provider/AuthProvider';
 import toast from 'react-hot-toast';
 import Swal from 'sweetalert2';
+import axios from 'axios';
 
 const Register = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -25,13 +26,21 @@ const Register = () => {
         updateUserProfile({ displayName: name, photoURL: photoUrl })
           .then(() => {
             setUser({ displayName: name, photoURL: photoUrl })
-            navigate("/");
-            Swal.fire({
-                title: 'Success!',
-                text: 'Registered Successfully',
-                icon: 'success',
-                confirmButtonText: 'Ok'
-              })
+            const user = {email: email}
+            axios.post('http://localhost:5000/jwt', user, {withCredentials: true})
+            .then(() => {
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Registered Successfully',
+                    icon: 'success',
+                    confirmButtonText: 'Ok'
+                  })
+                  navigate("/");
+            })
+            .catch((err) => {
+                console.error("JWT error:", err);
+                toast.error("Failed to authenticate with server.");
+              }); 
           })
           .catch(err => toast.error(err.message));
       })
@@ -42,13 +51,21 @@ const Register = () => {
     googleLogin()
       .then(result => {
         setUser(result.user);
-        navigate("/");
-        Swal.fire({
-            title: 'Success!',
-            text: 'Registered Successfully',
-            icon: 'success',
-            confirmButtonText: 'Ok'
-          })
+        const user = {email: result.user.email}
+        axios.post('http://localhost:5000/jwt', user, {withCredentials: true})
+            .then(() => {
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Registered Successfully With Google',
+                    icon: 'success',
+                    confirmButtonText: 'Ok'
+                  })
+                  navigate("/");
+            })
+            .catch((err) => {
+                console.error("JWT error:", err);
+                toast.error("Failed to authenticate with server.");
+              }); 
       })
       .catch(err => toast.error("Google login failed: " + err.message));
   };

@@ -16,16 +16,16 @@ const MyReviews = () => {
     useEffect(() => {
         if (user?.email) {
             axios
-                .get(`http://localhost:5000/myReviews`, {
+                .get(`https://trust-ease-server.vercel.app/myReviews`, {
                     params: { userEmail: user.email },
                 })
                 .then((res) => {
-                    console.log(res.data);
+                    // console.log(res.data);
                     setReviews(res.data);
                     setLoading(false);
                 })
-                .catch((err) => {
-                    console.error("Error fetching reviews:", err);
+                .catch(() => {
+                    // console.error("Error fetching reviews:", err);
                     setLoading(false);
                 });
         }
@@ -34,7 +34,7 @@ const MyReviews = () => {
     // Update a review
     const handleUpdateSubmit = (updatedReview) => {
         axios
-            .patch(`http://localhost:5000/reviews/${updatedReview._id}`, updatedReview, {
+            .patch(`https://trust-ease-server.vercel.app/reviews/${updatedReview._id}`, updatedReview, {
                 withCredentials: true,
             })
             .then(() => {
@@ -46,8 +46,8 @@ const MyReviews = () => {
                 setSelectedReview(null); // Close modal
                 Swal.fire("Success", "Review updated successfully!", "success");
             })
-            .catch((err) => {
-                console.error("Error updating review:", err);
+            .catch(() => {
+                // console.error("Error updating review:", err);
                 Swal.fire("Error", "Failed to update review.", "error");
             });
     };
@@ -64,15 +64,15 @@ const MyReviews = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 axios
-                    .delete(`http://localhost:5000/reviews/${id}`, {
+                    .delete(`https://trust-ease-server.vercel.app/reviews/${id}`, {
                         params: { userEmail: user.email },
                     })
                     .then(() => {
                         setReviews((prev) => prev.filter((review) => review._id !== id));
                         Swal.fire("Deleted!", "Your review has been deleted.", "success");
                     })
-                    .catch((err) => {
-                        console.error("Error deleting review:", err);
+                    .catch(() => {
+                        // console.error("Error deleting review:", err);
                         Swal.fire("Error", "Failed to delete review.", "error");
                     });
             }

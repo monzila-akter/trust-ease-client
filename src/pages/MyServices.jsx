@@ -2,6 +2,9 @@ import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { AuthContext } from "../provider/AuthProvider";
+import { FaPenToSquare } from "react-icons/fa6";
+import { FaTrashAlt } from "react-icons/fa";
+import toast from "react-hot-toast";
 
 const MyServices = () => {
     const { user } = useContext(AuthContext);
@@ -14,14 +17,14 @@ const MyServices = () => {
     useEffect(() => {
         if (user?.email) {
             axios
-                .get(`http://localhost:5000/myServices`, {
+                .get(`https://trust-ease-server.vercel.app/myServices`, {
                     params: { userEmail: user.email },
                 })
                 .then((res) => {
                     setServices(res.data);
                     setFilteredServices(res.data); // Initialize filtered services
                 })
-                .catch((err) => console.error("Error fetching services:", err));
+                .catch((err) => toast.error("Error fetching services:", err));
         }
     }, [user?.email]);
 
@@ -35,7 +38,7 @@ const MyServices = () => {
 
     // Handle service update submission
     const handleUpdateSubmit = (updatedService) => {
-        console.log("Updating service with data:", updatedService); // Debugging log
+        // console.log("Updating service with data:", updatedService); // Debugging log
 
         if (!updatedService.serviceTitle || !updatedService.price) {
             Swal.fire("Error", "Service title and price are required.", "error");
@@ -43,11 +46,11 @@ const MyServices = () => {
         }
 
         axios
-            .patch(`http://localhost:5000/services/${updatedService._id}`, updatedService, {
+            .patch(`https://trust-ease-server.vercel.app/services/${updatedService._id}`, updatedService, {
                 withCredentials: true, // Ensure cookies are included
             })
-            .then((res) => {
-                console.log('res.data', res);
+            .then(() => {
+                // console.log('res.data', res);
                 
                 setServices((prev) =>
                     prev.map((service) =>
@@ -58,9 +61,9 @@ const MyServices = () => {
                 Swal.fire("Success", "Service updated successfully!", "success");
             })
             .catch((err) => {
-                console.log('err', err);
+                // console.log('err', err);
                 
-                console.error("Error updating service:", err.response?.data || err.message);
+                // console.error("Error updating service:", err.response?.data || err.message);
                 Swal.fire("Error", err.response?.data?.message || "Failed to update service.", "error");
             });
     };
@@ -77,15 +80,15 @@ const MyServices = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 axios
-                    .delete(`http://localhost:5000/services/${id}`, {
+                    .delete(`https://trust-ease-server.vercel.app/services/${id}`, {
                         withCredentials: true, // Ensure cookies are included
                     })
                     .then(() => {
                         setServices((prev) => prev.filter((service) => service._id !== id));
                         Swal.fire("Deleted!", "Your service has been deleted.", "success");
                     })
-                    .catch((err) => {
-                        console.error("Error deleting service:", err);
+                    .catch(() => {
+                        // console.error("Error deleting service:", err);
                         Swal.fire("Error", "Failed to delete service.", "error");
                     });
             }
@@ -93,8 +96,8 @@ const MyServices = () => {
     };
 
     return (
-        <div className="w-11/12 mx-auto mt-6">
-            <h2 className="text-2xl text-teal-700 font-bold mb-4">My Services</h2>
+        <div className="w-11/12 mx-auto px-5 md:px-10 lg:px-14 py-16">
+            <h2 className="text-4xl text-teal-700 font-bold text-center mb-8">My Services</h2>
 
             {/* Search Input */}
             <input
@@ -124,19 +127,19 @@ const MyServices = () => {
                                 <td>${service.price}</td>
                                 <td>
                                     <button
-                                        className="btn btn-warning btn-sm mr-2"
+                                        className="btn btn-warning text-lg mr-2"
                                         onClick={() => {
-                                            console.log("Selected service for update:", service); // Debugging log
+                                            // console.log("Selected service for update:", service); // Debugging log
                                             setSelectedService(service);
                                         }}
                                     >
-                                        Update
+                                        <FaPenToSquare></FaPenToSquare>
                                     </button>
                                     <button
-                                        className="btn btn-error btn-sm"
+                                        className="btn btn-error text-lg text-white"
                                         onClick={() => handleDelete(service._id)}
                                     >
-                                        Delete
+                                        <FaTrashAlt></FaTrashAlt>
                                     </button>
                                 </td>
                             </tr>

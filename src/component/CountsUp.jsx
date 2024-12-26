@@ -17,13 +17,13 @@ const CountsUp = () => {
   // Fetch counts from the backend
   useEffect(() => {
     axios
-      .get("http://localhost:5000/counts")
+      .get("https://trust-ease-server.vercel.app/counts")
       .then((response) => {
         setCounts(response.data);
         setLoading(false);
       })
-      .catch((error) => {
-        console.error("Error fetching counts:", error);
+      .catch(() => {
+        // console.error("Error fetching counts:", error);
         setLoading(false);
       });
   }, []);

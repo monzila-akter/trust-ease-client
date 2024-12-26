@@ -27,7 +27,7 @@ const Register = () => {
           .then(() => {
             setUser({ displayName: name, photoURL: photoUrl })
             const user = {email: email}
-            axios.post('http://localhost:5000/jwt', user, {withCredentials: true})
+            axios.post('https://trust-ease-server.vercel.app/jwt', user, {withCredentials: true})
             .then(() => {
                 Swal.fire({
                     title: 'Success!',
@@ -37,8 +37,8 @@ const Register = () => {
                   })
                   navigate("/");
             })
-            .catch((err) => {
-                console.error("JWT error:", err);
+            .catch(() => {
+                // console.error("JWT error:", err);
                 toast.error("Failed to authenticate with server.");
               }); 
           })
@@ -52,7 +52,7 @@ const Register = () => {
       .then(result => {
         setUser(result.user);
         const user = {email: result.user.email}
-        axios.post('http://localhost:5000/jwt', user, {withCredentials: true})
+        axios.post('https://trust-ease-server.vercel.app/jwt', user, {withCredentials: true})
             .then(() => {
                 Swal.fire({
                     title: 'Success!',
@@ -62,8 +62,8 @@ const Register = () => {
                   })
                   navigate("/");
             })
-            .catch((err) => {
-                console.error("JWT error:", err);
+            .catch(() => {
+                // console.error("JWT error:", err);
                 toast.error("Failed to authenticate with server.");
               }); 
       })

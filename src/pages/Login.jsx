@@ -21,12 +21,12 @@ const Login = () => {
 
     loginUser(email, password)
       .then(result => {
-        console.log(result.user.email)
+        // console.log(result.user.email)
         setUser(result.user);
         const user = {email: email}
-        axios.post("http://localhost:5000/jwt", user, {withCredentials: true})
-        .then(data => {
-            console.log(data.data)
+        axios.post("https://trust-ease-server.vercel.app/jwt", user, {withCredentials: true})
+        .then(() => {
+            // console.log(data.data)
             Swal.fire({
                 title: 'Success!',
                 text: 'Logged In Successfully',
@@ -35,8 +35,8 @@ const Login = () => {
               })
                navigate(location?.state? location.state : "/") 
         })
-        .catch((err) => {
-            console.error('JWT error:', err);
+        .catch(() => {
+            // console.error('JWT error:', err);
             toast.error('Failed to authenticate with server.');
           });
       })
@@ -57,7 +57,7 @@ const Login = () => {
       .then(result => {
         setUser(result.user);
         const user = {email: result.user.email}
-        axios.post('http://localhost:5000/jwt', user, {withCredentials: true})
+        axios.post('https://trust-ease-server.vercel.app/jwt', user, {withCredentials: true})
         .then(() => {
             Swal.fire({
                 title: 'Success!',

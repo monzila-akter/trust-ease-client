@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { motion } from "framer-motion"; 
 import ServiceCard from "./ServiceCard";
+import toast from "react-hot-toast";
 
 const FeaturedServices = () => {
   const [featuredServices, setFeaturedServices] = useState([]);
@@ -9,13 +10,13 @@ const FeaturedServices = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/featuredServices") // Backend endpoint
+      .get("https://trust-ease-server.vercel.app/featuredServices") // Backend endpoint
       .then((response) => {
         setFeaturedServices(response.data);
         setLoading(false);
       })
       .catch((error) => {
-        console.error("Error fetching featured services:", error);
+        toast.error("Error fetching featured services:", error);
         setLoading(false);
       });
   }, []);

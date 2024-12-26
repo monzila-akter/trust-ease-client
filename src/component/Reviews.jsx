@@ -33,7 +33,7 @@ const Reviews = ({ reviews = [], setReviews, serviceId, serviceTitle }) => {
         };
 
         // POST the new review to the server
-        axios.post("http://localhost:5000/reviews", review, {withCredentials: true}).then(() => {
+        axios.post("https://trust-ease-server.vercel.app/reviews", review, {withCredentials: true}).then(() => {
             setReviews([...reviews, review]); // Update the reviews state
             setNewReview(""); // Clear the text area
             setRating(0); // Reset the rating input

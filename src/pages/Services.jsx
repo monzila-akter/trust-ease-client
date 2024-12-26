@@ -3,6 +3,7 @@ import axios from "axios";
 import ServiceCard from "../component/ServiceCard";
 import debounce from "lodash.debounce"; // Install with `npm install lodash.debounce`
 import { useSearchParams } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const Services = () => {
   const [services, setServices] = useState([]);
@@ -16,14 +17,14 @@ const Services = () => {
   const fetchServices = (query, selectedCategory) => {
     setLoading(true);
     axios
-      .get("http://localhost:5000/services", {
+      .get("https://trust-ease-server.vercel.app/services", {
         params: { search: query, category: selectedCategory }, // Pass search and category as query parameters
       })
       .then((response) => {
         setServices(response.data);
       })
-      .catch((error) => {
-        console.error("Error fetching services:", error);
+      .catch(() => {
+        // console.error("Error fetching services:", error);
       }).finally(() => {
         setLoading(false);
       });
@@ -41,13 +42,13 @@ const Services = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/services");
+        const response = await axios.get("https://trust-ease-server.vercel.app/services");
         const uniqueCategories = [
           ...new Set(response.data.map((service) => service.category)),
         ];
         setCategories(uniqueCategories);
       } catch (error) {
-        console.error("Error fetching categories:", error);
+       toast.error("Error fetching categories:", error);
       }
     };
 

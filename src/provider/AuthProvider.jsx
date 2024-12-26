@@ -2,6 +2,7 @@
 import {  createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile,  GoogleAuthProvider } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import { auth } from "../firebse_init";
+import axios from "axios";
 
 
 
@@ -55,7 +56,21 @@ const authInfo = {
     const unsubscribe = onAuthStateChanged(auth, currentUser => {
       // console.log('currentUser', currentUser)
         setUser(currentUser)
-        setLoading(false)
+        if(currentUser?.email) {
+            const user = {email: currentUser.email}
+            
+            axios.post('https://trust-ease-server.vercel.app/jwt', user, {withCredentials: true})
+            .then(() => {
+                setLoading(false)
+            })
+        }
+        else {
+            axios.post('https://trust-ease-server.vercel.app/logout', {}, {withCredentials: true})
+            .then(() => {
+                setLoading(false)
+            })
+        }
+       
     })
     return () => {
         unsubscribe();

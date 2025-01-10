@@ -10,7 +10,7 @@ const Navbar = () => {
   const {user, logOut} = useContext(AuthContext)
 
   return (
-    <nav className="bg-teal-700 p-5">
+    <nav className="bg-teal-700 p-5 fixed top-0 left-0 w-full z-50">
       <div className="w-11/12 mx-auto flex items-center justify-between">
         
         {/* Website Name/Logo on the left */}

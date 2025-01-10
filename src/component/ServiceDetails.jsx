@@ -40,7 +40,7 @@ const ServiceDetails = () => {
     }
 
     return (
-        <div className="w-11/12 mx-auto px-5 md:px-10 lg:px-14 my-16">
+        <div className="w-11/12 mx-auto px-5 md:px-10 lg:px-14 mt-[150px] mb-16">
             {/* Service Details Section */}
             <ServiceInfo service={service} />
             {/* Reviews Section */}

@@ -49,7 +49,7 @@ const MyServices = () => {
             .patch(`https://trust-ease-server.vercel.app/services/${updatedService._id}`, updatedService, {
                 withCredentials: true, // Ensure cookies are included
             })
-            .then(() => {
+            .then(() => { 
                 // console.log('res.data', res);
                 
                 setServices((prev) =>
@@ -96,7 +96,7 @@ const MyServices = () => {
     };
 
     return (
-        <div className="w-11/12 mx-auto px-5 md:px-10 lg:px-14 py-16">
+        <div className="w-11/12 mx-auto px-5 md:px-10 lg:px-14 mt-[100px] py-16">
             <h2 className="text-4xl text-teal-700 font-bold text-center mb-8">My Services</h2>
 
             {/* Search Input */}

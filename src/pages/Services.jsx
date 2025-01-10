@@ -77,7 +77,7 @@ const Services = () => {
   }
 
   return (
-    <div className="w-11/12 mx-auto px-5 md:px-10 lg:px-14 py-16">
+    <div className="w-11/12 mx-auto px-5 md:px-10 lg:px-14 mt-[100px] py-16">
       <h1 className="text-4xl font-bold text-center mb-10 text-teal-700">Our Services</h1>
 
       {/* Search and Filter Section */}

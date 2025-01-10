@@ -55,7 +55,7 @@ const AddServicePage = () => {
   };
 
   return (
-    <div className="max-w-4xl bg-teal-50 mx-auto px-6 py-8 shadow-md rounded-md mt-16 mb-16 border-2">
+    <div className="max-w-4xl bg-teal-50 mx-auto px-6 py-8 shadow-md rounded-md mt-[150px] mb-16 border-2">
       <h1 className="text-3xl text-teal-700 font-bold mb-7 text-center">Add New Service</h1>
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

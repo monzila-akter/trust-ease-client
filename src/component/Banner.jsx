@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   const [currentSlide, setCurrentSlide] = useState(1);
@@ -23,7 +24,7 @@ const Banner = () => {
   };
 
   return (
-    <div className="flex justify-center mb-10 md:mb-20">
+    <div className="flex justify-center mt-[75px] mb-10 md:mb-20">
       <div className="carousel w-full h-[500px] mx-auto">
         {/* Slide 1 */}
         <div
@@ -43,12 +44,14 @@ const Banner = () => {
             <p data-aos="fade-left" className="text-lg md:text-2xl mt-4">
               Explore the best services and make informed decisions with trusted reviews.
             </p>
+            <Link to="/services">
             <button
               data-aos="fade-right"
               className="btn bg-transparent border-2 border-white text-white text-xl mt-6 hover:bg-white hover:text-black"
             >
               Start Exploring
             </button>
+            </Link>
           </div>
           <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
             <button

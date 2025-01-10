@@ -88,7 +88,7 @@ const MyReviews = () => {
     }
 
     return (
-        <div className="w-11/12 mx-auto px-5 md:px-10 lg:px-14 my-16">
+        <div className="w-11/12 mx-auto px-5 md:px-10 lg:px-14 mt-[150px] mb-16">
             <h2 className="text-4xl text-center text-teal-700 font-bold mb-8">My Reviews</h2>
 
             {reviews.length > 0 ? (

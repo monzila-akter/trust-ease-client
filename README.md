@@ -1,96 +1,116 @@
-## TRUST EASE
+## 🤝 TrustEase – Your Reliable Service Review Platform
+(Add a clean screenshot here)
 
-## 2.Purpose:
+## 🚀 Project Overview
 
-# The project aims to:
+- TrustEase is a Service Review System that allows users to explore services, add their own services, and share their experiences through reviews. Users can manage their services, update their reviews, and interact with others to make informed decisions. This platform provides a seamless and secure way to review and engage with various services.
 
-- Enable users to share their experiences with services.
+## 🛠️ Tech Stack
 
-- Provide a platform for managing services and reviews.
+- Frontend: React.js, Tailwind CSS, Framer Motion, React Router
+- Backend: Node.js, Express.js, MongoDB
+- Authentication: Firebase Authentication, JWT (JSON Web Token)
+- UI Enhancements: React Rating, Swiper.js, React CountUp
+- Hosting: Netlify (Client), Vercel (Server), Firebase
 
-- Enhance user interaction with features like dynamic filtering, search, and authentication.
+## 🌟 Core Features
 
-## 3.Key Features:
+✅ User Authentication: Email/password login and Google/GitHub sign-in
+✅ Service Management: Add, update, and delete services dynamically
+✅ Review System: Users can add, update, and delete reviews with ratings
+✅ Private Routes: Secured access for adding services and managing reviews
+✅ Search & Filtering: Find services based on keywords and categories
+✅ JWT Authentication: Secure API routes with token-based authentication
+✅ Pagination & Responsive UI: Optimized for all devices with smooth navigation
+✅ Real-time Stats: React CountUp to display service and user statistics
 
-### General Features
+## 📦 Dependencies
 
-- Fully responsive design for mobile, tablet, and desktop devices.
+### Below are the key dependencies used in the project:
 
-- Dynamic page titles based on the current route.
+1. Client-Side (Frontend)
+- React.js
+- React Router DOM
+- Firebase Authentication
+- Tailwind CSS / Material Tailwind
+- React Rating (for star ratings)
+- Framer Motion (for animations)
+- Swiper.js (for sliders)
+- React Toastify / SweetAlert (for notifications)
+- React CountUp (for statistics)
+2. Server-Side (Backend)
+- Node.js
+- Express.js
+- MongoDB (Mongoose)
+- JSON Web Token (JWT)
 
-- User-friendly layout with proper alignment, spacing, and color contrast.
+## 🏗️ Installation & Setup
+### Follow these steps to set up the project locally:
 
-### User Capabilities
+### 1️⃣ Clone the Repositories
 
-- **Add/Update/Delete Services**: Logged-in users can manage their services efficiently.
-- **View Service Details**: Explore detailed information and reviews for any service.
-- **Add, Edit, Delete Reviews**: Post reviews with ratings and feedback.
-- **Manage My Reviews**: View and manage reviews in a dedicated section.
-- **Search and Filter**: Find services by keywords and categories.
+- bash
+- Copy
+- Edit
+- git clone <CLIENT_REPO_URL>
+- git clone <SERVER_REPO_URL>
+### 2️⃣ Install Dependencies
 
-### Security
+### Navigate into both the client and server directories and install dependencies:
 
-- **Firebase**: Secure authentication using Firebase with environment variables.
-- **JWT Authentication**: Secures APIs and ensures user authorization.
-- **Environment Variables**: MongoDB credentials and Firebase keys are securely stored.
+- bash
+- Copy
+- Edit
 
-### UI Enhancements
+# For client-side
 
-- **Loading Spinner**: Provides feedback during data load states.
-- **Toast Notifications**: Alerts for all CRUD operations.
-- **Framer Motion Animations**: Smooth transitions for an engaging user experience.
-- **Pagination**: Display 6–9 services per page for better performance.
+- cd client
+- npm install
 
-### Additional Features
+# For server-side
 
-- **Meet Our Partners**: Highlights collaborators and partners of the platform.
-- **Countup**: Displays the number of users, reviews, and services dynamically.
-- **404 Page**: Interactive "Not Found" page for invalid routes.
+- cd server
+- npm install
 
----
+### 3️⃣ Set Up Environment Variables
 
-## Authentication System
+### Create a .env file in the server directory and add the following:
 
-### Login
+- env
+- Copy
+- Edit
+- MONGO_URI=your_mongodb_connection_string
+- JWT_SECRET=your_jwt_secret_key
 
-- Email and password-based authentication.
-- Google or GitHub-based login option.
-- Error messages for invalid credentials.
+### For the client, set up Firebase credentials in an .env file:
 
-### Register
+- env
+- Copy
+- Edit
+- REACT_APP_FIREBASE_API_KEY=your_firebase_api_key
+- REACT_APP_FIREBASE_AUTH_DOMAIN=your_firebase_auth_domain
 
-- Secure registration with password validation:
-  - At least 6 characters.
-  - One uppercase letter.
-  - One lowercase letter.
-- Toast notifications for successful registration.
+### 4️⃣ Run the Server & Client
 
----
+- bash
+- Copy
+- Edit
 
-## Deployment Guidelines
+# Start the backend server
 
-- **Client-Side Deployment**: Ensure the frontend works flawlessly without reloading errors.
-- **Server-Side Deployment**: Secure production server and avoid CORS/404/504 errors.
-- **Domain Authorization**: Add domain for Firebase authorization if using Netlify/Surge.
+- cd server
+- npm run dev  
 
+# Start the frontend client
+- cd client
+- npm start  
 
-## 4.NPM Package I Have Used:
+## 🔗 Live Links & Resources
 
-1. react icon
+1. Live Site: https://trust-ease-client.web.app/
+2. Client GitHub Repo: https://github.com/monzila-akter/trust-ease-client
+3. Server GitHub Repo: https://github.com/monzila-akter/trust-ease-server
 
-2. react rating
-
-3. react countup
-
-4. react hot toast
-
-5. sweet alert
-
-
-## 5.Live Site URL:
-
-- https://trust-ease-client.web.app/
- 
 
 ## 6.Required document link:
 

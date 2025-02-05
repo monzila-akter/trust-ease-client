@@ -1,5 +1,7 @@
 ## 🤝 TrustEase – Your Reliable Service Review Platform
-(Add a clean screenshot here)
+
+![CoinCrafter Screenshot](https://github.com/monzila-akter/trust-ease-client/blob/main/src/assets/trust-ease-1.PNG)
+![CoinCrafter Screenshot](https://github.com/monzila-akter/trust-ease-client/blob/main/src/assets/trust-ease-2.PNG)
 
 ## 🚀 Project Overview
 

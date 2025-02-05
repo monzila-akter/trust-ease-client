@@ -45,6 +45,7 @@
 - JSON Web Token (JWT)
 
 ## 🏗️ Installation & Setup
+
 ### Follow these steps to set up the project locally:
 
 ### 1️⃣ Clone the Repositories
@@ -62,12 +63,12 @@
 - Copy
 - Edit
 
-# For client-side
+### For client-side
 
 - cd client
 - npm install
 
-# For server-side
+### For server-side
 
 - cd server
 - npm install
@@ -96,12 +97,12 @@
 - Copy
 - Edit
 
-# Start the backend server
+### Start the backend server
 
 - cd server
 - npm run dev  
 
-# Start the frontend client
+### Start the frontend client
 - cd client
 - npm start  
 

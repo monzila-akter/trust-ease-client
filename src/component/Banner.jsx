@@ -85,9 +85,10 @@ const Banner = () => {
             <p className="text-lg md:text-2xl mt-4">
               Help others by sharing your valuable feedback on services you've used.
             </p>
+            <Link to="/services">
             <button className="btn bg-transparent border-2 border-white text-white text-xl mt-6 hover:bg-white hover:text-black">
               Write a Review
-            </button>
+            </button></Link>
           </div>
           <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
             <button
@@ -121,9 +122,10 @@ const Banner = () => {
             <p className="text-lg md:text-2xl mt-4">
               Join our community to find and share authentic service reviews.
             </p>
+            <Link to="/services">
             <button className="btn bg-transparent border-2 border-white text-white text-xl mt-6 hover:bg-white hover:text-black">
               Get Started
-            </button>
+            </button></Link>
           </div>
           <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
             <button

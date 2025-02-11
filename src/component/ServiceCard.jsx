@@ -32,10 +32,10 @@ const ServiceCard = ({ service }) => {
           <strong>Price:</strong> ${price}
         </p>
         <Link to={`/services/${_id}`}>
-          <button className="btn bg-teal-700 text-lg font-semibold text-white py-2 rounded hover:bg-teal-800">
-            See Details
-          </button>
-        </Link>
+  <button className="btn bg-teal-700 text-lg font-semibold text-white py-2 rounded hover:bg-teal-800 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg">
+    See Details
+  </button>
+</Link>
       </div>
     </motion.div>
   );

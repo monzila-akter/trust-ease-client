@@ -1,4 +1,6 @@
 import { Link, useRouteError } from "react-router-dom";
+import lottieError from "../assets/lottie/lottieError.json"
+import Lottie from "lottie-react";
 
 
 const ErrorPage = () => {
@@ -6,8 +8,8 @@ const ErrorPage = () => {
     const error = useRouteError();
     // console.log('routerError', error)
     return (
-        <div className="container mx-auto  justify-center items-center min-h-screen flex flex-col">
-           <h2 className="text-4xl font-bold text-black mb-6">Oops!</h2>
+        <div className="container mx-auto  justify-center items-center min-h-screen py-16 flex flex-col">
+           <Lottie animationData={lottieError}></Lottie>
            {
             error.status === 404 && <div className="flex flex-col justify-center">
                 <h3 className="text-center text-2xl font-bold text-red-500 mb-5">Sorry an unexpected error has occurred</h3>

@@ -3,6 +3,7 @@ import axios from "axios";
 import { motion } from "framer-motion"; 
 import ServiceCard from "./ServiceCard";
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 const FeaturedServices = () => {
   const [featuredServices, setFeaturedServices] = useState([]);
@@ -42,6 +43,8 @@ const FeaturedServices = () => {
           <ServiceCard key={service._id} service={service}></ServiceCard>
         ))}
       </motion.div>
+      <Link to="/services">
+      <button className="btn bg-teal-700 text-lg text-white font-semibold mt-12 block mx-auto">Show More</button></Link>
     </div>
   );
 };

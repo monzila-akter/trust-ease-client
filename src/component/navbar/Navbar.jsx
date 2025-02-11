@@ -3,6 +3,7 @@ import { FaUser } from 'react-icons/fa6';
 import { Link, NavLink} from 'react-router-dom';
 import "./navbar.css"
 import { AuthContext } from '../../provider/AuthProvider';
+import ThemeToggle from '../ThemeToggle';
 
 
 const Navbar = () => {
@@ -36,6 +37,7 @@ const Navbar = () => {
           
 
         </div>
+        <ThemeToggle></ThemeToggle>
 
         {/* login/register button for large device */}
         <div className="hidden lg:flex items-center space-x-5">

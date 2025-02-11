@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import ServiceCard from "../component/ServiceCard";
-import debounce from "lodash.debounce"; // Install with `npm install lodash.debounce`
+import debounce from "lodash.debounce"; // Install with npm install lodash.debounce
 import { useSearchParams } from "react-router-dom";
 import toast from "react-hot-toast";
 
@@ -11,6 +11,7 @@ const Services = () => {
   const [search, setSearch] = useState(""); // Search term
   const [category, setCategory] = useState(""); // Selected category
   const [categories, setCategories] = useState([]); // List of categories
+  const [sortBy, setSortBy] = useState(""); // Sorting criteria
   const [searchParams, setSearchParams] = useSearchParams();
 
   // Debounced function to fetch services based on search and filter criteria
@@ -25,10 +26,11 @@ const Services = () => {
       })
       .catch(() => {
         // console.error("Error fetching services:", error);
-      }).finally(() => {
+      })
+      .finally(() => {
         setLoading(false);
       });
-  }; 
+  };
 
   // Debounced version of fetch function
   const debouncedFetchData = useCallback(
@@ -42,31 +44,44 @@ const Services = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await axios.get("https://trust-ease-server.vercel.app/services");
+        const response = await axios.get(
+          "https://trust-ease-server.vercel.app/services"
+        );
         const uniqueCategories = [
           ...new Set(response.data.map((service) => service.category)),
         ];
         setCategories(uniqueCategories);
       } catch (error) {
-       toast.error("Error fetching categories:", error);
+        toast.error("Error fetching categories:", error);
       }
     };
 
     fetchCategories();
-    if (!searchParams.get("search") && !searchParams.get('category')) {
-        fetchServices();
+    if (!searchParams.get("search") && !searchParams.get("category")) {
+      fetchServices();
     }
   }, []);
 
   useEffect(() => {
     const initialQuery = searchParams.get("search") || "";
-    const initialCategory = searchParams.get('category') || "";
+    const initialCategory = searchParams.get("category") || "";
     setSearch(initialQuery);
     setCategory(initialCategory);
     if (initialQuery || initialCategory) {
       debouncedFetchData(initialQuery, initialCategory);
     }
   }, [searchParams]);
+
+  // Sort services based on the selected criteria
+  const sortedServices = [...services].sort((a, b) => {
+    if (sortBy === "price_asc") {
+      return a.price - b.price;
+    } else if (sortBy === "price_desc") {
+      return b.price - a.price;
+    } else {
+      return 0; // No sorting
+    }
+  });
 
   if (loading) {
     return (
@@ -78,9 +93,11 @@ const Services = () => {
 
   return (
     <div className="w-11/12 mx-auto px-5 md:px-10 lg:px-14 mt-[100px] py-16">
-      <h1 className="text-4xl font-bold text-center mb-10 text-teal-700">Our Services</h1>
+      <h1 className="text-4xl font-bold text-center mb-10 text-teal-700">
+        Our Services
+      </h1>
 
-      {/* Search and Filter Section */}
+      {/* Search, Filter, and Sort Section */}
       <div className="flex flex-wrap gap-4 mb-10 justify-center">
         <input
           type="text"
@@ -90,7 +107,7 @@ const Services = () => {
           onChange={(e) => {
             const value = e.target.value;
             setSearch(value);
-            setSearchParams({search: value, category: category});
+            setSearchParams({ search: value, category: category });
             debouncedFetchData(value, category);
           }} // Dynamically update search term
         />
@@ -101,7 +118,7 @@ const Services = () => {
           onChange={(e) => {
             const value = e.target.value;
             setCategory(value);
-            setSearchParams({search: search, category: value});
+            setSearchParams({ search: search, category: value });
             debouncedFetchData(search, value);
           }} // Update selected category
         >
@@ -112,13 +129,23 @@ const Services = () => {
             </option>
           ))}
         </select>
+
+        {/* Sorting Dropdown */}
+        <select
+          className="select select-bordered max-w-xs"
+          value={sortBy}
+          onChange={(e) => setSortBy(e.target.value)} // Update sorting criteria
+        >
+          <option value="">Sort By</option>
+          <option value="price_asc">Price: Low to High</option>
+          <option value="price_desc">Price: High to Low</option>
+        </select>
       </div>
-      
-        
+
       {/* Services Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {services.length > 0 ? (
-          services.map((service) => (
+        {sortedServices.length > 0 ? (
+          sortedServices.map((service) => (
             <ServiceCard key={service._id} service={service}></ServiceCard>
           ))
         ) : (

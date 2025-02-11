@@ -66,7 +66,7 @@ const AddServicePage = () => {
               name="serviceImage"
               value={formData.serviceImage}
               onChange={handleChange}
-              className="w-full px-4 py-2 border rounded-md focus:ring focus:ring-teal-700 focus:outline-none"
+              className="w-full px-4 py-2 border rounded-md focus:ring focus:ring-teal-700 focus:outline-none bg-white"
               required
             />
           </div>
@@ -77,7 +77,7 @@ const AddServicePage = () => {
               name="serviceTitle"
               value={formData.serviceTitle}
               onChange={handleChange}
-              className="w-full px-4 py-2 border rounded-md focus:ring focus:ring-teal-700 focus:outline-none"
+              className="w-full px-4 py-2 border rounded-md focus:ring focus:ring-teal-700 focus:outline-none bg-white"
               required
             />
           </div>
@@ -88,7 +88,7 @@ const AddServicePage = () => {
               name="companyName"
               value={formData.companyName}
               onChange={handleChange}
-              className="w-full px-4 py-2 border rounded-md focus:ring focus:ring-teal-700 focus:outline-none"
+              className="w-full px-4 py-2 border rounded-md focus:ring focus:ring-teal-700 focus:outline-none bg-white"
               required
             />
           </div>
@@ -99,7 +99,7 @@ const AddServicePage = () => {
               name="website"
               value={formData.website}
               onChange={handleChange}
-              className="w-full px-4 py-2 border rounded-md focus:ring focus:ring-teal-700 focus:outline-none"
+              className="w-full px-4 py-2 border rounded-md focus:ring focus:ring-teal-700 focus:outline-none bg-white"
               required
             />
           </div>
@@ -109,7 +109,7 @@ const AddServicePage = () => {
               name="description"
               value={formData.description}
               onChange={handleChange}
-              className="w-full px-4 py-2 border rounded-md focus:ring focus:ring-teal-700 focus:outline-none"
+              className="w-full px-4 py-2 border rounded-md focus:ring focus:ring-teal-700 focus:outline-none bg-white"
               rows="4"
               required
             />
@@ -121,7 +121,7 @@ const AddServicePage = () => {
               name="category"
               value={formData.category}
               onChange={handleChange}
-              className="w-full px-4 py-2 border rounded-md focus:ring focus:ring-teal-700 focus:outline-none"
+              className="w-full px-4 py-2 border rounded-md focus:ring focus:ring-teal-700 focus:outline-none bg-white"
               required
             />
           </div>
@@ -132,7 +132,7 @@ const AddServicePage = () => {
               name="price"
               value={formData.price}
               onChange={handleChange}
-              className="w-full px-4 py-2 border rounded-md focus:ring focus:ring-teal-700 focus:outline-none"
+              className="w-full px-4 py-2 border rounded-md focus:ring focus:ring-teal-700 focus:outline-none bg-white"
               required
             />
           </div>

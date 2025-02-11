@@ -44,7 +44,7 @@ const FeaturedServices = () => {
         ))}
       </motion.div>
       <Link to="/services">
-      <button className="btn bg-teal-700 text-lg text-white font-semibold mt-12 block mx-auto">Show More</button></Link>
+      <button className="btn bg-teal-700 text-lg text-white font-semibold mt-12 block mx-auto hover:bg-teal-800 transition hover:scale-105">Show More</button></Link>
     </div>
   );
 };
